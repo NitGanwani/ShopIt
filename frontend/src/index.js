@@ -24,6 +24,7 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import reportWebVitals from './reportWebVitals';
+import ProfileScreen from './screens/ProfileScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
         />
       </Route>
       <Route path="/order/:id" element={<OrderScreen></OrderScreen>} />
+      <Route path="/profile" element={<ProfileScreen></ProfileScreen>} />
     </Route>
   )
 );
