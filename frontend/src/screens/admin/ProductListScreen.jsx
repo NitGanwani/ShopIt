@@ -1,11 +1,12 @@
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button, Row, Col } from 'react-bootstrap';
-import { FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import {
   useGetProductsQuery,
   useCreateProductMutation,
+  useUpdateProductMutation,
 } from '../../slices/productsApiSlice';
 import { toast } from 'react-toastify';
 
@@ -14,6 +15,9 @@ const ProductListScreen = () => {
 
   const [createProduct, { isLoading: isCreateLoading }] =
     useCreateProductMutation();
+
+  const [updateProduct, { isLoading: isUpdateLoading }] =
+    useUpdateProductMutation();
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {

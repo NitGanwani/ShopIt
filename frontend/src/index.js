@@ -28,6 +28,7 @@ import reportWebVitals from './reportWebVitals';
 import ProfileScreen from './screens/ProfileScreen';
 import OrderListScreen from './screens/admin/OrderListScreen';
 import ProductListScreen from './screens/admin/ProductListScreen';
+import ProductEditScreen from './screens/admin/ProductEditScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -58,6 +59,10 @@ const router = createBrowserRouter(
       <Route
         path="/admin/productslist"
         element={<ProductListScreen></ProductListScreen>}
+      />
+      <Route
+        path="/admin/product/:id/edit"
+        element={<ProductEditScreen></ProductEditScreen>}
       />
     </Route>
   )
