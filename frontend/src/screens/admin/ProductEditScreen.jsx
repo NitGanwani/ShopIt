@@ -90,6 +90,7 @@ const ProductEditScreen = () => {
       <FormContainer>
         <h1>Edit Product</h1>
         {isUpdateLoading && <Loader />}
+        {isUploadLoading && <Loader />}
         {isLoading ? (
           <Loader />
         ) : error ? (

@@ -6,7 +6,6 @@ import Loader from '../../components/Loader';
 import {
   useGetProductsQuery,
   useCreateProductMutation,
-  useUpdateProductMutation,
   useDeleteProductMutation,
 } from '../../slices/productsApiSlice';
 import { toast } from 'react-toastify';
@@ -16,9 +15,6 @@ const ProductListScreen = () => {
 
   const [createProduct, { isLoading: isCreateLoading }] =
     useCreateProductMutation();
-
-  const [updateProduct, { isLoading: isUpdateLoading }] =
-    useUpdateProductMutation();
 
   const [deleteProduct, { isLoading: isDeleteLoading }] =
     useDeleteProductMutation();
