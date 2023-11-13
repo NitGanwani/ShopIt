@@ -90,7 +90,7 @@ const ProductEditScreen = () => {
       <FormContainer>
         <h1>Edit Product</h1>
         {isUpdateLoading && <Loader />}
-        {isUploadLoading && <Loader />}
+
         {isLoading ? (
           <Loader />
         ) : error ? (
@@ -115,6 +115,7 @@ const ProductEditScreen = () => {
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
+            {isUploadLoading && <Loader />}
             <Form.Group controlId="image" className="my-2">
               <Form.Label>Image</Form.Label>
               <Form.Control
