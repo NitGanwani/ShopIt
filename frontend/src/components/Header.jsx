@@ -15,6 +15,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
+import Searchbox from './Searchbox';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -48,6 +49,7 @@ const Header = () => {
           <NavbarToggle aria-controls="basic-navbar-nav"></NavbarToggle>
           <NavbarCollapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <Searchbox />
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart />
