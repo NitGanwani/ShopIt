@@ -63,3 +63,11 @@ table th {
   height: 500px;
   object-fit: cover;
 }
+
+@media (max-width: 768px) {
+  /* Adjust this to the breakpoint you want */
+  .my-image-container {
+    display: flex;
+    justify-content: center;
+  }
+}
