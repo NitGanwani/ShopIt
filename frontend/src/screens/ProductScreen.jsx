@@ -186,7 +186,6 @@ const ProductScreen = () => {
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
-                    {console.log(review._id)} {/* Log review._id */}
                     {userInfo._id === review.user && (
                       <Button
                         variant="danger border-color text-white"

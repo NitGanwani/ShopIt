@@ -113,9 +113,6 @@ const createProductReview = asyncHandler(async (req, res) => {
 });
 
 const deleteProductReview = asyncHandler(async (req, res) => {
-  console.log('Product ID:', req.params.id); // Log product ID
-  console.log('Review ID:', req.params.reviewId); // Log review ID
-
   const product = await Product.findById(req.params.id);
 
   if (product) {
