@@ -49,5 +49,17 @@ table th {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(64, 83, 90, 0.5);
+}
+
+.my-image {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+}
+
+.carousel-image {
+  width: 700px;
+  height: 500px;
+  object-fit: cover;
 }

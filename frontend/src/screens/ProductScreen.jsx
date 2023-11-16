@@ -45,6 +45,7 @@ const ProductScreen = () => {
   const [deleteReview] = useDeleteReviewMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
+  console.log(userInfo);
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, quantity }));
@@ -186,17 +187,19 @@ const ProductScreen = () => {
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
-                    {userInfo._id === review.user && (
-                      <Button
-                        variant="danger border-color text-white"
-                        className="btn-sm"
-                        onClick={() => {
-                          deleteReviewHandler(review._id);
-                        }}
-                      >
-                        Delete Review
-                      </Button>
-                    )}
+                    {userInfo
+                      ? userInfo._id === review.user && (
+                          <Button
+                            variant="danger border-color text-white"
+                            className="btn-sm"
+                            onClick={() => {
+                              deleteReviewHandler(review._id);
+                            }}
+                          >
+                            Delete Review
+                          </Button>
+                        )
+                      : null}
                   </ListGroup.Item>
                 ))}
 
