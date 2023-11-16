@@ -18,7 +18,10 @@ import { useState } from 'react';
 import { addToCart } from '../slices/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { useCreateReviewMutation } from '../slices/productsApiSlice';
+import {
+  useCreateReviewMutation,
+  useDeleteReviewMutation,
+} from '../slices/productsApiSlice';
 const ProductScreen = () => {
   const { id: productId } = useParams();
 
@@ -39,6 +42,8 @@ const ProductScreen = () => {
   const [createReview, { isLoading: isReviewLoading }] =
     useCreateReviewMutation();
 
+  const [deleteReview] = useDeleteReviewMutation();
+
   const { userInfo } = useSelector((state) => state.auth);
 
   const addToCartHandler = () => {
@@ -54,6 +59,18 @@ const ProductScreen = () => {
       toast.success('Review submitted successfully');
       setRating(0);
       setComment('');
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+    }
+  };
+
+  const deleteReviewHandler = async (reviewId) => {
+    try {
+      if (window.confirm('Are you sure you want to delete this review?')) {
+        await deleteReview({ productId: product._id, reviewId }).unwrap();
+        refetch();
+        toast.success('Review deleted successfully');
+      }
     } catch (error) {
       toast.error(error?.data?.message || error.error);
     }
@@ -169,8 +186,21 @@ const ProductScreen = () => {
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
+                    {console.log(review._id)} {/* Log review._id */}
+                    {userInfo._id === review.user && (
+                      <Button
+                        variant="danger border-color text-white"
+                        className="btn-sm"
+                        onClick={() => {
+                          deleteReviewHandler(review._id);
+                        }}
+                      >
+                        Delete Review
+                      </Button>
+                    )}
                   </ListGroup.Item>
                 ))}
+
                 <ListGroup.Item>
                   <h2>Write a review</h2>
                   {isReviewLoading && <Loader />}
